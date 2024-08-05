@@ -1,42 +1,50 @@
 # CSV to DMN converter
-## How can it benefit you?
-The purpose of this program is to convert a CSV file to a DMN table and vice versa. This enables you to use e.g. Excel functions to enter information into the DMN table.
+## Allows
+* ".csv" < - (both senses) - > ".dmn"
+  * -> Excel functions -- can be used to -- enter information | DMN table
 
 ## How does it work?
-The program is reading the CSV, which has to be in a particular layout, into an object, this is then creating a `DmnModelInstance` (class provided by Camunda), this instance is then exported to a DMN file.
-On your .jar file (located in the target folder), which you got from compiling the project with maven, run following command:
+* read the CSV / must be | particular layout (an object)
+* `DmnModelInstance` (class provided by Camunda) is created / 
+  * it's exported -- to a -- ".dmn"
+* | your ".jar"'s location -> run next commands
 
+## How to run it?
 * `mvn clean install compile`
 * `cd target/`
   * Move your cursor to target folder, where the .jar are generated
 * `java -jar csv2dmn-converter-jar-with-dependencies.jar [-c] [-d] -i inputFile -o outputFile`
   * Selected the "with-dependencies" one
-  * Either -c or -d must be provided!!
-  * `-c,--csv-to-dmn                   Convert CSV to DMN`
-  * `-cv,--include-camunda-variables   Include Camunda variables`
-  * `-d,--dmn-to-csv                   Convert DMN to CSV`
-  * `-i,--input-file <arg>             Input file (CSV or DMN)`
-  * `-o,--output-file <arg>            Output file (CSV or DMN)`
+  * 👁️Either `-c` OR `-d` must be provided!! 👁️
+  * `-c,--csv-to-dmn`
+    * == CSV -> DMN
+  * `-cv,--include-camunda-variables`
+    * == Include Camunda variables
+  * `-d,--dmn-to-csv`
+    * == DMN -> CSV
+  * `-i,--input-file <arg>`
+    * == Input file (CSV or DMN)
+  * `-o,--output-file <arg>`
+    * == Output file (CSV or DMN)
 
 
 ## Example
-Your CSV-File (values separated with comma!!) should look like this (further explanation below)
-![Origin CSV][origin-csv]
+* Given a .csv / 👁️ values separated with comma 👁️
+![Origin CSV](./docs/OriginCSV.png)
 
-Then on your .jar file in your target folder, which you got from compiling it with Maven run this command:
-![Command][command]
-
-Your outcome should be following:
-![Outcome DMN][outcome-dmn]
-
-
+* compile the Maven project
+* | your .jar file location (under /target), run 
+![Command](./docs/Command.png)
+* your outcome should be
+![Outcome DMN](./docs/OutcomeDMN.png)
 
 
-
-## Layout of a compatible file
-
-The CSV needs following format in order to be able to be picked up by the program. All the fields are described afterwards.
-Imagine the table below is a CSV opened in Excel.
+## CSV formatting rules
+* requirements
+  * row1
+    * description of each column
+  * always needed >=1 input & >=1 output
+* _Example:_
 
 . | A | B | C | D | E | F | G
 --- | --- | --- | --- | --- |--- |--- |---
